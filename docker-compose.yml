@@ -1,0 +1,65 @@
+version: '3'
+services:
+  web:
+    image: web_modsecu 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web_server
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      TZ: "Asia/Ho_Chi_Minh"
+      DB_SERVER: "db"  
+      DB_DATABASE: "web_tuyendung"
+      DB_USER: "ankan"
+      DB_PASSWORD: "310102"
+    restart: always
+    volumes:
+      # Bind mounts
+      - "./src/WEB:/var/www/html" 
+      - "./src/ca/ca.crt:/etc/filebeat/ca.crt" 
+      - "./src/ca/ca.crt:/etc/packetbeat/ca.crt"
+      - "./startupCMDdocker.sh:/startupCMDdocker.sh"
+      
+      # Named volumes
+      - "ModSecurity_data:/ModSecurity"  
+      - "ModSecurity-apache_data:/ModSecurity-apache"
+      - "confModsecurity_data:/etc/apache2/modsecurity.d"
+      - "confModsecurity_data_apache:/etc/apache2/sites-available"
+      - "filebeat_data:/etc/filebeat"
+
+  db:
+    image: mariadb:10.5
+    container_name: mariadb_server
+    environment:
+      MYSQL_ROOT_PASSWORD: "root_password"
+      MYSQL_DATABASE: web_tuyendung
+      MYSQL_USER: ankan
+      MYSQL_PASSWORD: "310102"
+    volumes:
+      - db_data:/var/lib/mysql
+      - "./initWebTD.sql:/docker-entrypoint-initdb.d/initWebTD.sql"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: "root_password"
+    ports:
+      - "81:80"
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  db_data:
+  ModSecurity_data:
+  ModSecurity-apache_data:
+  confModsecurity_data:
+  confModsecurity_data_apache:
+  filebeat_data:
