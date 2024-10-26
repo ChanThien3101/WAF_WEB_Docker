@@ -83,7 +83,7 @@ function updateUser(
     $name,
     $email,
     $phone,
-    $address,
+    $address
 ) {
     $sql = "UPDATE user SET
             name = ?,
@@ -107,7 +107,7 @@ function updateCorp(
     $size,
     $workingday,
     $link,
-    $benefits,
+    $benefits
 ) {
     $sql = "UPDATE corp SET
                 activeYear = ?,
