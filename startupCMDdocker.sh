@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# Start ClamAV daemon
-echo "Starting ClamAV daemon..."
-service clamav-daemon start
-if [ $? -ne 0 ]; then
-  echo "Failed to start ClamAV daemon."
-  exit 1
-else
-  echo "ClamAV daemon started successfully."
-fi
 
 # Start MariaDB
 echo "Starting MariaDB..."

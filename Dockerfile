@@ -81,7 +81,7 @@ COPY ./startupCMDdocker.sh /startupCMDdocker.sh
 RUN chmod +x /startupCMDdocker.sh
 
 # Expose necessary ports
-EXPOSE 80 3310
+EXPOSE 80
 
 # Set working directory
 WORKDIR /var/www/html/
