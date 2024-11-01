@@ -37,12 +37,12 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `corp` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `activeYear` int(2) NOT NULL,
-  `size` int(10) NOT NULL,
-  `introduce` text NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `benefits` text NOT NULL,
-  `workingday` text NOT NULL
+  `activeYear` int(2) NULL,
+  `size` int(10) NULL,
+  `introduce` text NULL,
+  `link` varchar(255) NULL,
+  `benefits` text NULL,
+  `workingday` text NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -64,12 +64,12 @@ INSERT INTO `corp` (`id`, `iduser`, `activeYear`, `size`, `introduce`, `link`, `
 CREATE TABLE IF NOT EXISTS `cv` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `birth` date NOT NULL,
-  `salary` varchar(255) NOT NULL,
-  `major` varchar(255) NOT NULL,
-  `introduce` text NOT NULL,
-  `attach` varchar(255) NOT NULL
+  `gender` varchar(255) NULL,
+  `birth` date NULL,
+  `salary` varchar(255) NULL,
+  `major` varchar(255) NULL,
+  `introduce` text NULL,
+  `attach` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -89,16 +89,16 @@ INSERT INTO `cv` (`id`, `iduser`, `gender`, `birth`, `salary`, `major`, `introdu
 
 CREATE TABLE IF NOT EXISTS `datafilter` (
   `id` int(11) NOT NULL,
-  `age` varchar(255) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `exp` varchar(255) NOT NULL,
-  `job` varchar(255) NOT NULL,
-  `level` varchar(255) NOT NULL,
-  `salary` varchar(255) NOT NULL,
-  `progLang` varchar(255) NOT NULL,
-  `typeRecr` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL
+  `age` varchar(255) NULL,
+  `gender` varchar(10) NULL,
+  `address` varchar(255) NULL,
+  `exp` varchar(255) NULL,
+  `job` varchar(255) NULL,
+  `level` varchar(255) NULL,
+  `salary` varchar(255) NULL,
+  `progLang` varchar(255) NULL,
+  `typeRecr` varchar(255) NULL,
+  `date` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -200,9 +200,9 @@ INSERT INTO `datafilter` (`id`, `age`, `gender`, `address`, `exp`, `job`, `level
 CREATE TABLE IF NOT EXISTS `degree` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `school` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL
+  `name` varchar(255) NULL,
+  `school` varchar(255) NULL,
+  `year` year(4) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -235,11 +235,11 @@ INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `year`) VALUES
 CREATE TABLE IF NOT EXISTS `expcv` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `level` varchar(255) NOT NULL,
-  `job` varchar(255) NOT NULL,
-  `corp` varchar(255) NOT NULL,
-  `start` date NOT NULL,
-  `end` date NOT NULL
+  `level` varchar(255) NULL,
+  `job` varchar(255) NULL,
+  `corp` varchar(255) NULL,
+  `start` date NULL,
+  `end` date NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -272,12 +272,12 @@ INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUE
 CREATE TABLE IF NOT EXISTS `gallery` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `thumbnail1` varchar(255) NOT NULL,
-  `thumbnail2` varchar(255) NOT NULL,
-  `thumbnail3` varchar(255) NOT NULL,
-  `thumbnail4` varchar(255) NOT NULL,
-  `thumbnail5` varchar(255) NOT NULL
+  `avatar` varchar(255) NULL,
+  `thumbnail1` varchar(255) NULL,
+  `thumbnail2` varchar(255) NULL,
+  `thumbnail3` varchar(255) NULL,
+  `thumbnail4` varchar(255) NULL,
+  `thumbnail5` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -303,8 +303,8 @@ CREATE TABLE IF NOT EXISTS `info` (
   `id` int(10) NOT NULL,
   `idrec` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `attach` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `attach` varchar(255) NULL,
+  `status` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -324,16 +324,16 @@ INSERT INTO `info` (`id`, `idrec`, `idcv`, `attach`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `recr` (
   `id` int(10) NOT NULL,
   `idcorp` int(10) NOT NULL,
-  `job` varchar(255) NOT NULL,
-  `exp` varchar(255) NOT NULL,
-  `level` varchar(255) NOT NULL,
-  `salary` varchar(255) NOT NULL,
-  `progLang` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `start` date NOT NULL,
-  `end` date NOT NULL,
-  `request` text NOT NULL
+  `job` varchar(255) NULL,
+  `exp` varchar(255) NULL,
+  `level` varchar(255) NULL,
+  `salary` varchar(255) NULL,
+  `progLang` varchar(255) NULL,
+  `type` varchar(255) NULL,
+  `description` text NULL,
+  `start` date  NULL,
+  `end` date NULL,
+  `request` text NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -357,8 +357,8 @@ INSERT INTO `recr` (`id`, `idcorp`, `job`, `exp`, `level`, `salary`, `progLang`,
 CREATE TABLE IF NOT EXISTS `skillcv` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `progLang` varchar(255) NOT NULL,
-  `percent` int(10) NOT NULL
+  `progLang` varchar(255) NULL,
+  `percent` int(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -395,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(13) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `address` varchar(255) NULL,
   `role` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
