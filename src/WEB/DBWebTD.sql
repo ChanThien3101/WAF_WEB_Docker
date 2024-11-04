@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2024 lúc 05:36 PM
+-- Thời gian đã tạo: Th10 02, 2024 lúc 08:56 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -70,9 +70,11 @@ CREATE TABLE `cv` (
 --
 
 INSERT INTO `cv` (`id`, `iduser`, `gender`, `birth`, `salary`, `major`, `introduce`, `attach`) VALUES
-(2, 2, '', '0000-00-00', '', '', '', ''),
+(2, 2, 'Nữ', '2000-11-11', '8 ~ 15 tr / tháng', 'ggg', 'gggg', ''),
 (3, 3, '', '0000-00-00', '', '', '', ''),
-(4, 4, '', '0000-00-00', '', '', '', '');
+(4, 4, '', '0000-00-00', '', '', '', ''),
+(5, 10, '', '0000-00-00', '', '', '', ''),
+(6, 11, '', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -203,7 +205,7 @@ CREATE TABLE `degree` (
 --
 
 INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `year`) VALUES
-(6, 2, '', '', '0000'),
+(6, 2, 'ggg', 'ggg', '2000'),
 (7, 2, '', '', '0000'),
 (8, 2, '', '', '0000'),
 (9, 2, '', '', '0000'),
@@ -217,7 +219,17 @@ INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `year`) VALUES
 (17, 4, '', '', '0000'),
 (18, 4, '', '', '0000'),
 (19, 4, '', '', '0000'),
-(20, 4, '', '', '0000');
+(20, 4, '', '', '0000'),
+(21, 5, '', '', '0000'),
+(22, 5, '', '', '0000'),
+(23, 5, '', '', '0000'),
+(24, 5, '', '', '0000'),
+(25, 5, '', '', '0000'),
+(26, 6, '', '', '0000'),
+(27, 6, '', '', '0000'),
+(28, 6, '', '', '0000'),
+(29, 6, '', '', '0000'),
+(30, 6, '', '', '0000');
 
 -- --------------------------------------------------------
 
@@ -240,7 +252,7 @@ CREATE TABLE `expcv` (
 --
 
 INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUES
-(6, 2, '', '', '', '0000-00-00', '0000-00-00'),
+(6, 2, 'Internship / Fresher', 'gg', 'ggg', '2024-11-28', '2024-12-06'),
 (7, 2, '', '', '', '0000-00-00', '0000-00-00'),
 (8, 2, '', '', '', '0000-00-00', '0000-00-00'),
 (9, 2, '', '', '', '0000-00-00', '0000-00-00'),
@@ -254,7 +266,17 @@ INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUE
 (17, 4, '', '', '', '0000-00-00', '0000-00-00'),
 (18, 4, '', '', '', '0000-00-00', '0000-00-00'),
 (19, 4, '', '', '', '0000-00-00', '0000-00-00'),
-(20, 4, '', '', '', '0000-00-00', '0000-00-00');
+(20, 4, '', '', '', '0000-00-00', '0000-00-00'),
+(21, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(22, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(23, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(24, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(25, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(26, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(27, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(28, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(29, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(30, 6, '', '', '', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -278,13 +300,15 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `iduser`, `avatar`, `thumbnail1`, `thumbnail2`, `thumbnail3`, `thumbnail4`, `thumbnail5`) VALUES
-(2, 2, '', '', '', '', '', ''),
+(2, 2, 'Screenshot2024-10-08134007.png', '', '', '', '', ''),
 (3, 3, '', '', '', '', '', ''),
 (4, 4, '', '', '', '', '', ''),
 (5, 5, 'z4950728667416_7c7a8d0c040e88037792987d3f2a98e4.jpg', 'z4950729745567_e446900ff729dfb0d9769d21de68213e.jpg', 'z4950730564284_bc291262188e75e14122f83393dbbb0e.jpg', 'z4950731104046_f7bb7e15cd4f2bf3ae4a2f638c4d98dd.jpg', '', ''),
 (6, 6, 'z4950769526213_822bd0e5c57083af7ccab4b93fb3575d.jpg', 'z4950770628781_258811672a14bfe498b5fc8cda76dfb4.jpg', 'z4950771020687_ea9977afe0b6f3344c7f486444a0345b.jpg', 'z4950771709115_317fe04cf3c0aa6e4735e6e1f77eb59d.jpg', 'z4950772098022_c18699884909fa7f740aa9d901d4b55a.jpg', 'z4950772339916_b7e2e97b5189c97c488758a50cce1eca.jpg'),
 (7, 7, 'kms.png', 'z4950790063708_d2456f279f5c37cb586ef3bf8ca1c4d1.jpg', 'z4950790678793_d5127c33553e72c0c5b26b1a4d6cdb23.jpg', 'z4950790967876_91121a255454e28043997e66097d14f0.jpg', 'z4950791324219_367f3ba3c3831473dbd2903765327027.jpg', ''),
-(8, 8, 'z4950820798890_8a57a28c6327bb7b3f92eef0219ab4f0.jpg', 'z4950852509241_9d3a60c7572b9e34fb2f04fa9c11a1e2.jpg', 'z4950853037179_768d0878f2782586ee09057d38879e00.jpg', 'z4950852751723_14fb19a30ddaaaffab6d90fe06a8702f.jpg', '', '');
+(8, 8, 'z4950820798890_8a57a28c6327bb7b3f92eef0219ab4f0.jpg', 'z4950852509241_9d3a60c7572b9e34fb2f04fa9c11a1e2.jpg', 'z4950853037179_768d0878f2782586ee09057d38879e00.jpg', 'z4950852751723_14fb19a30ddaaaffab6d90fe06a8702f.jpg', '', ''),
+(9, 10, '', '', '', '', '', ''),
+(10, 11, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -359,7 +383,7 @@ CREATE TABLE `skillcv` (
 --
 
 INSERT INTO `skillcv` (`id`, `idcv`, `progLang`, `percent`) VALUES
-(6, 2, '', 0),
+(6, 2, 'Angular', 100),
 (7, 2, '', 0),
 (8, 2, '', 0),
 (9, 2, '', 0),
@@ -373,7 +397,17 @@ INSERT INTO `skillcv` (`id`, `idcv`, `progLang`, `percent`) VALUES
 (17, 4, '', 0),
 (18, 4, '', 0),
 (19, 4, '', 0),
-(20, 4, '', 0);
+(20, 4, '', 0),
+(21, 5, '', 0),
+(22, 5, '', 0),
+(23, 5, '', 0),
+(24, 5, '', 0),
+(25, 5, '', 0),
+(26, 6, '', 0),
+(27, 6, '', 0),
+(28, 6, '', 0),
+(29, 6, '', 0),
+(30, 6, '', 0);
 
 -- --------------------------------------------------------
 
@@ -397,14 +431,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `pass`, `name`, `email`, `phone`, `address`, `role`) VALUES
-(2, 'dung', '123', 'Ngô Thị Dung', 'dung@gmail.com', '0346540478', '', 2),
+(2, 'dung', '123', 'Võ Quỳnh Châu', 'dung@gmail.com', '0987654321', 'Thôn Vĩnh Tuy, xã Tịnh Hiệp', 2),
 (3, 'user', '123', 'Quỳnh Châu', 'qchau1506@gmail.com', '0335061506', '', 2),
-(4, 'tuan', '123', 'Nguyễn Anh Tuấn', 'tuan@gmail.com', '0346540476', '', 2),
+(4, 'tuan', '123', 'Nguyễn Anh Tuấn Anh Mai Hoa', 'tuan@gmail.com', '0346540476', '', 2),
 (5, 'cty1', '123', 'Niteco Vietnam Co', 'nitecoVN@gmail.com', '0982130660', 'Hà Nội', 3),
 (6, 'cty2', '123', 'NFQ Asia', 'corp@gmail.com', '0982130661', 'TP. Hồ Chí Minh', 3),
 (7, 'cty3', '123', 'KMS Technology', 'kmstech@gmail.com', '0982130662', 'TP. Hồ Chí Minh', 3),
 (8, 'cty4', '123', ' Zuhlke Engineering VIE', 'zuhlkeco@gmail.com', '0982130663', 'Đà Nẵng', 3),
-(9, 'admin', '123', '', '', '', '', 1);
+(9, 'admin', '123', '', '', '', '', 1),
+(10, 'quynhchau', 'Vanngoc1506@', 'Vân Ngọc', 'phohanminhngoc@gmail.com', '0979341760', '', 2),
+(11, 'aaaaaa', 'Ahau123@', 'aaaaaaaa', 'a@gmail.com', '0979331760', '', 2);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -493,7 +529,7 @@ ALTER TABLE `corp`
 -- AUTO_INCREMENT cho bảng `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `datafilter`
@@ -505,19 +541,19 @@ ALTER TABLE `datafilter`
 -- AUTO_INCREMENT cho bảng `degree`
 --
 ALTER TABLE `degree`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `expcv`
 --
 ALTER TABLE `expcv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `info`
@@ -535,13 +571,13 @@ ALTER TABLE `recr`
 -- AUTO_INCREMENT cho bảng `skillcv`
 --
 ALTER TABLE `skillcv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

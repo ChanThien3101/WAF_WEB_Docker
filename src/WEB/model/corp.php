@@ -57,7 +57,7 @@ function manageInfo($id)
 
 function loadRecr($id)
 {
-    $sql = "SELECT c.iduser, u.name, r.*
+    $sql = "SELECT c.iduser, u.name, r.* 
             FROM recr r
             LEFT JOIN corp c ON  r.idcorp = c.id
             INNER JOIN user u ON c.iduser = u.id
@@ -131,7 +131,7 @@ function updateCorp(
 
 function listBrand() {
     $sql = "SELECT g.avatar, c.id FROM user u
-    LEFT JOIN gallery g ON g.iduser = u.id
+    LEFT JOIN gallery g ON g.iduser = u.id 
     LEFT JOIN corp c ON u.id = c.iduser
     WHERE u.role = 3";
     return pdo_query($sql);

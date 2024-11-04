@@ -1,18 +1,17 @@
 CREATE DATABASE IF NOT EXISTS web_tuyendung;
 CREATE USER IF NOT EXISTS 'ankan'@'%' IDENTIFIED BY '310102';
-GRANT ALL PRIVILEGES ON web_tuyendung.* TO 'ankan'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'ankan'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 USE web_tuyendung;
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2024 lúc 05:36 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Nov 02, 2024 at 09:43 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,28 +24,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `duan1`
+-- Database: `web_tuyendung`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `corp`
+-- Table structure for table `corp`
 --
 
-CREATE TABLE IF NOT EXISTS `corp` (
+CREATE TABLE `corp` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `activeYear` int(2) NULL,
-  `size` int(10) NULL,
-  `introduce` text NULL,
-  `link` varchar(255) NULL,
-  `benefits` text NULL,
-  `workingday` text NULL
+  `activeYear` int(2) NOT NULL,
+  `size` int(10) NOT NULL,
+  `introduce` text NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `benefits` text NOT NULL,
+  `workingday` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `corp`
+-- Dumping data for table `corp`
 --
 
 INSERT INTO `corp` (`id`, `iduser`, `activeYear`, `size`, `introduce`, `link`, `benefits`, `workingday`) VALUES
@@ -58,51 +57,54 @@ INSERT INTO `corp` (`id`, `iduser`, `activeYear`, `size`, `introduce`, `link`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cv`
+-- Table structure for table `cv`
 --
 
-CREATE TABLE IF NOT EXISTS `cv` (
+CREATE TABLE `cv` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `gender` varchar(255) NULL,
-  `birth` date NULL,
-  `salary` varchar(255) NULL,
-  `major` varchar(255) NULL,
-  `introduce` text NULL,
-  `attach` varchar(255) NULL
+  `gender` varchar(255) NOT NULL,
+  `birth` date NOT NULL,
+  `salary` varchar(255) NOT NULL,
+  `major` varchar(255) NOT NULL,
+  `introduce` text NOT NULL,
+  `attach` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `cv`
+-- Dumping data for table `cv`
 --
 
 INSERT INTO `cv` (`id`, `iduser`, `gender`, `birth`, `salary`, `major`, `introduce`, `attach`) VALUES
-(2, 2, '', '0000-00-00', '', '', '', ''),
+(2, 2, 'Nữ', '2000-11-11', '8 ~ 15 tr / tháng', 'ggg', 'gggg', ''),
 (3, 3, '', '0000-00-00', '', '', '', ''),
-(4, 4, '', '0000-00-00', '', '', '', '');
+(4, 4, '', '0000-00-00', '', '', '', ''),
+(5, 10, '', '0000-00-00', '', '', '', ''),
+(6, 11, '', '0000-00-00', '', '', '', ''),
+(7, 12, 'Khác', '2024-11-20', '15 ~ 23 tr / tháng', 'ATTT', 'aa', '');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `datafilter`
+-- Table structure for table `datafilter`
 --
 
-CREATE TABLE IF NOT EXISTS `datafilter` (
+CREATE TABLE `datafilter` (
   `id` int(11) NOT NULL,
-  `age` varchar(255) NULL,
-  `gender` varchar(10) NULL,
-  `address` varchar(255) NULL,
-  `exp` varchar(255) NULL,
-  `job` varchar(255) NULL,
-  `level` varchar(255) NULL,
-  `salary` varchar(255) NULL,
-  `progLang` varchar(255) NULL,
-  `typeRecr` varchar(255) NULL,
-  `date` varchar(255) NULL
+  `age` varchar(255) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `exp` varchar(255) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `salary` varchar(255) NOT NULL,
+  `progLang` varchar(255) NOT NULL,
+  `typeRecr` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `datafilter`
+-- Dumping data for table `datafilter`
 --
 
 INSERT INTO `datafilter` (`id`, `age`, `gender`, `address`, `exp`, `job`, `level`, `salary`, `progLang`, `typeRecr`, `date`) VALUES
@@ -194,23 +196,23 @@ INSERT INTO `datafilter` (`id`, `age`, `gender`, `address`, `exp`, `job`, `level
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `degree`
+-- Table structure for table `degree`
 --
 
-CREATE TABLE IF NOT EXISTS `degree` (
+CREATE TABLE `degree` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `name` varchar(255) NULL,
-  `school` varchar(255) NULL,
-  `year` year(4) NULL
+  `name` varchar(255) NOT NULL,
+  `school` varchar(255) NOT NULL,
+  `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `degree`
+-- Dumping data for table `degree`
 --
 
 INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `year`) VALUES
-(6, 2, '', '', '0000'),
+(6, 2, 'ggg', 'ggg', '2000'),
 (7, 2, '', '', '0000'),
 (8, 2, '', '', '0000'),
 (9, 2, '', '', '0000'),
@@ -224,30 +226,45 @@ INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `year`) VALUES
 (17, 4, '', '', '0000'),
 (18, 4, '', '', '0000'),
 (19, 4, '', '', '0000'),
-(20, 4, '', '', '0000');
+(20, 4, '', '', '0000'),
+(21, 5, '', '', '0000'),
+(22, 5, '', '', '0000'),
+(23, 5, '', '', '0000'),
+(24, 5, '', '', '0000'),
+(25, 5, '', '', '0000'),
+(26, 6, '', '', '0000'),
+(27, 6, '', '', '0000'),
+(28, 6, '', '', '0000'),
+(29, 6, '', '', '0000'),
+(30, 6, '', '', '0000'),
+(31, 7, '', '', '0000'),
+(32, 7, '', '', '0000'),
+(33, 7, '', '', '0000'),
+(34, 7, '', '', '0000'),
+(35, 7, '', '', '0000');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `expcv`
+-- Table structure for table `expcv`
 --
 
-CREATE TABLE IF NOT EXISTS `expcv` (
+CREATE TABLE `expcv` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `level` varchar(255) NULL,
-  `job` varchar(255) NULL,
-  `corp` varchar(255) NULL,
-  `start` date NULL,
-  `end` date NULL
+  `level` varchar(255) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `corp` varchar(255) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `expcv`
+-- Dumping data for table `expcv`
 --
 
 INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUES
-(6, 2, '', '', '', '0000-00-00', '0000-00-00'),
+(6, 2, 'Internship / Fresher', 'gg', 'ggg', '2024-11-28', '2024-12-06'),
 (7, 2, '', '', '', '0000-00-00', '0000-00-00'),
 (8, 2, '', '', '', '0000-00-00', '0000-00-00'),
 (9, 2, '', '', '', '0000-00-00', '0000-00-00'),
@@ -261,54 +278,72 @@ INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUE
 (17, 4, '', '', '', '0000-00-00', '0000-00-00'),
 (18, 4, '', '', '', '0000-00-00', '0000-00-00'),
 (19, 4, '', '', '', '0000-00-00', '0000-00-00'),
-(20, 4, '', '', '', '0000-00-00', '0000-00-00');
+(20, 4, '', '', '', '0000-00-00', '0000-00-00'),
+(21, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(22, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(23, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(24, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(25, 5, '', '', '', '0000-00-00', '0000-00-00'),
+(26, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(27, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(28, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(29, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(30, 6, '', '', '', '0000-00-00', '0000-00-00'),
+(31, 7, '', '', '', '0000-00-00', '0000-00-00'),
+(32, 7, '', '', '', '0000-00-00', '0000-00-00'),
+(33, 7, '', '', '', '0000-00-00', '0000-00-00'),
+(34, 7, '', '', '', '0000-00-00', '0000-00-00'),
+(35, 7, '', '', '', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `gallery`
+-- Table structure for table `gallery`
 --
 
-CREATE TABLE IF NOT EXISTS `gallery` (
+CREATE TABLE `gallery` (
   `id` int(10) NOT NULL,
   `iduser` int(10) NOT NULL,
-  `avatar` varchar(255) NULL,
-  `thumbnail1` varchar(255) NULL,
-  `thumbnail2` varchar(255) NULL,
-  `thumbnail3` varchar(255) NULL,
-  `thumbnail4` varchar(255) NULL,
-  `thumbnail5` varchar(255) NULL
+  `avatar` varchar(255) NOT NULL,
+  `thumbnail1` varchar(255) NOT NULL,
+  `thumbnail2` varchar(255) NOT NULL,
+  `thumbnail3` varchar(255) NOT NULL,
+  `thumbnail4` varchar(255) NOT NULL,
+  `thumbnail5` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `gallery`
+-- Dumping data for table `gallery`
 --
 
 INSERT INTO `gallery` (`id`, `iduser`, `avatar`, `thumbnail1`, `thumbnail2`, `thumbnail3`, `thumbnail4`, `thumbnail5`) VALUES
-(2, 2, '', '', '', '', '', ''),
+(2, 2, 'Screenshot2024-10-08134007.png', '', '', '', '', ''),
 (3, 3, '', '', '', '', '', ''),
 (4, 4, '', '', '', '', '', ''),
 (5, 5, 'z4950728667416_7c7a8d0c040e88037792987d3f2a98e4.jpg', 'z4950729745567_e446900ff729dfb0d9769d21de68213e.jpg', 'z4950730564284_bc291262188e75e14122f83393dbbb0e.jpg', 'z4950731104046_f7bb7e15cd4f2bf3ae4a2f638c4d98dd.jpg', '', ''),
 (6, 6, 'z4950769526213_822bd0e5c57083af7ccab4b93fb3575d.jpg', 'z4950770628781_258811672a14bfe498b5fc8cda76dfb4.jpg', 'z4950771020687_ea9977afe0b6f3344c7f486444a0345b.jpg', 'z4950771709115_317fe04cf3c0aa6e4735e6e1f77eb59d.jpg', 'z4950772098022_c18699884909fa7f740aa9d901d4b55a.jpg', 'z4950772339916_b7e2e97b5189c97c488758a50cce1eca.jpg'),
 (7, 7, 'kms.png', 'z4950790063708_d2456f279f5c37cb586ef3bf8ca1c4d1.jpg', 'z4950790678793_d5127c33553e72c0c5b26b1a4d6cdb23.jpg', 'z4950790967876_91121a255454e28043997e66097d14f0.jpg', 'z4950791324219_367f3ba3c3831473dbd2903765327027.jpg', ''),
-(8, 8, 'z4950820798890_8a57a28c6327bb7b3f92eef0219ab4f0.jpg', 'z4950852509241_9d3a60c7572b9e34fb2f04fa9c11a1e2.jpg', 'z4950853037179_768d0878f2782586ee09057d38879e00.jpg', 'z4950852751723_14fb19a30ddaaaffab6d90fe06a8702f.jpg', '', '');
+(8, 8, 'z4950820798890_8a57a28c6327bb7b3f92eef0219ab4f0.jpg', 'z4950852509241_9d3a60c7572b9e34fb2f04fa9c11a1e2.jpg', 'z4950853037179_768d0878f2782586ee09057d38879e00.jpg', 'z4950852751723_14fb19a30ddaaaffab6d90fe06a8702f.jpg', '', ''),
+(9, 10, '', '', '', '', '', ''),
+(10, 11, '', '', '', '', '', ''),
+(11, 12, 'DinhHuuDuc.jpg', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `info`
+-- Table structure for table `info`
 --
 
-CREATE TABLE IF NOT EXISTS `info` (
+CREATE TABLE `info` (
   `id` int(10) NOT NULL,
   `idrec` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `attach` varchar(255) NULL,
-  `status` varchar(255) NULL
+  `attach` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `info`
+-- Dumping data for table `info`
 --
 
 INSERT INTO `info` (`id`, `idrec`, `idcv`, `attach`, `status`) VALUES
@@ -318,26 +353,26 @@ INSERT INTO `info` (`id`, `idrec`, `idcv`, `attach`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `recr`
+-- Table structure for table `recr`
 --
 
-CREATE TABLE IF NOT EXISTS `recr` (
+CREATE TABLE `recr` (
   `id` int(10) NOT NULL,
   `idcorp` int(10) NOT NULL,
-  `job` varchar(255) NULL,
-  `exp` varchar(255) NULL,
-  `level` varchar(255) NULL,
-  `salary` varchar(255) NULL,
-  `progLang` varchar(255) NULL,
-  `type` varchar(255) NULL,
-  `description` text NULL,
-  `start` date  NULL,
-  `end` date NULL,
-  `request` text NULL
+  `job` varchar(255) NOT NULL,
+  `exp` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `salary` varchar(255) NOT NULL,
+  `progLang` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `request` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `recr`
+-- Dumping data for table `recr`
 --
 
 INSERT INTO `recr` (`id`, `idcorp`, `job`, `exp`, `level`, `salary`, `progLang`, `type`, `description`, `start`, `end`, `request`) VALUES
@@ -351,22 +386,22 @@ INSERT INTO `recr` (`id`, `idcorp`, `job`, `exp`, `level`, `salary`, `progLang`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `skillcv`
+-- Table structure for table `skillcv`
 --
 
-CREATE TABLE IF NOT EXISTS `skillcv` (
+CREATE TABLE `skillcv` (
   `id` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
-  `progLang` varchar(255) NULL,
-  `percent` int(10) NULL
+  `progLang` varchar(255) NOT NULL,
+  `percent` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `skillcv`
+-- Dumping data for table `skillcv`
 --
 
 INSERT INTO `skillcv` (`id`, `idcv`, `progLang`, `percent`) VALUES
-(6, 2, '', 0),
+(6, 2, 'Angular', 100),
 (7, 2, '', 0),
 (8, 2, '', 0),
 (9, 2, '', 0),
@@ -380,86 +415,104 @@ INSERT INTO `skillcv` (`id`, `idcv`, `progLang`, `percent`) VALUES
 (17, 4, '', 0),
 (18, 4, '', 0),
 (19, 4, '', 0),
-(20, 4, '', 0);
+(20, 4, '', 0),
+(21, 5, '', 0),
+(22, 5, '', 0),
+(23, 5, '', 0),
+(24, 5, '', 0),
+(25, 5, '', 0),
+(26, 6, '', 0),
+(27, 6, '', 0),
+(28, 6, '', 0),
+(29, 6, '', 0),
+(30, 6, '', 0),
+(31, 7, '', 0),
+(32, 7, '', 0),
+(33, 7, '', 0),
+(34, 7, '', 0),
+(35, 7, '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(13) NOT NULL,
-  `address` varchar(255) NULL,
+  `address` varchar(255) NOT NULL,
   `role` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `pass`, `name`, `email`, `phone`, `address`, `role`) VALUES
-(2, 'dung', '123', 'Ngô Thị Dung', 'dung@gmail.com', '0346540478', '', 2),
+(2, 'dung', '123', 'Võ Quỳnh Châu', 'dung@gmail.com', '0987654321', 'Thôn Vĩnh Tuy, xã Tịnh Hiệp', 2),
 (3, 'user', '123', 'Quỳnh Châu', 'qchau1506@gmail.com', '0335061506', '', 2),
-(4, 'tuan', '123', 'Nguyễn Anh Tuấn', 'tuan@gmail.com', '0346540476', '', 2),
+(4, 'tuan', '123', 'Nguyễn Anh Tuấn Anh Mai Hoa', 'tuan@gmail.com', '0346540476', '', 2),
 (5, 'cty1', '123', 'Niteco Vietnam Co', 'nitecoVN@gmail.com', '0982130660', 'Hà Nội', 3),
 (6, 'cty2', '123', 'NFQ Asia', 'corp@gmail.com', '0982130661', 'TP. Hồ Chí Minh', 3),
 (7, 'cty3', '123', 'KMS Technology', 'kmstech@gmail.com', '0982130662', 'TP. Hồ Chí Minh', 3),
 (8, 'cty4', '123', ' Zuhlke Engineering VIE', 'zuhlkeco@gmail.com', '0982130663', 'Đà Nẵng', 3),
-(9, 'admin', '123', '', '', '', '', 1);
+(9, 'admin', '123', '', '', '', '', 1),
+(10, 'quynhchau', 'Vanngoc1506@', 'Vân Ngọc', 'phohanminhngoc@gmail.com', '0979341760', '', 2),
+(11, 'aaaaaa', 'Ahau123@', 'aaaaaaaa', 'a@gmail.com', '0979331760', '', 2),
+(12, 'chanthien2', 'Duc123456', 'CyberEye', 'chicanniemtin2002@gmail.com', '0917026053', 'Đà Nẵng', 2);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `corp`
+-- Indexes for table `corp`
 --
 ALTER TABLE `corp`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_corp_user` (`iduser`);
 
 --
--- Chỉ mục cho bảng `cv`
+-- Indexes for table `cv`
 --
 ALTER TABLE `cv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_cv_user` (`iduser`);
 
 --
--- Chỉ mục cho bảng `datafilter`
+-- Indexes for table `datafilter`
 --
 ALTER TABLE `datafilter`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `degree`
+-- Indexes for table `degree`
 --
 ALTER TABLE `degree`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_degree_cv` (`idcv`);
 
 --
--- Chỉ mục cho bảng `expcv`
+-- Indexes for table `expcv`
 --
 ALTER TABLE `expcv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_expCv_cv` (`idcv`);
 
 --
--- Chỉ mục cho bảng `gallery`
+-- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_gallery_user` (`iduser`);
 
 --
--- Chỉ mục cho bảng `info`
+-- Indexes for table `info`
 --
 ALTER TABLE `info`
   ADD PRIMARY KEY (`id`),
@@ -467,138 +520,138 @@ ALTER TABLE `info`
   ADD KEY `FK_info_recr` (`idrec`);
 
 --
--- Chỉ mục cho bảng `recr`
+-- Indexes for table `recr`
 --
 ALTER TABLE `recr`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_rerc_corp` (`idcorp`);
 
 --
--- Chỉ mục cho bảng `skillcv`
+-- Indexes for table `skillcv`
 --
 ALTER TABLE `skillcv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_skillCv_cv` (`idcv`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `corp`
+-- AUTO_INCREMENT for table `corp`
 --
 ALTER TABLE `corp`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `cv`
+-- AUTO_INCREMENT for table `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `datafilter`
+-- AUTO_INCREMENT for table `datafilter`
 --
 ALTER TABLE `datafilter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
--- AUTO_INCREMENT cho bảng `degree`
+-- AUTO_INCREMENT for table `degree`
 --
 ALTER TABLE `degree`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `expcv`
+-- AUTO_INCREMENT for table `expcv`
 --
 ALTER TABLE `expcv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `gallery`
+-- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `info`
+-- AUTO_INCREMENT for table `info`
 --
 ALTER TABLE `info`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `recr`
+-- AUTO_INCREMENT for table `recr`
 --
 ALTER TABLE `recr`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `skillcv`
+-- AUTO_INCREMENT for table `skillcv`
 --
 ALTER TABLE `skillcv`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `corp`
+-- Constraints for table `corp`
 --
 ALTER TABLE `corp`
   ADD CONSTRAINT `FK_corp_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `cv`
+-- Constraints for table `cv`
 --
 ALTER TABLE `cv`
   ADD CONSTRAINT `FK_cv_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `degree`
+-- Constraints for table `degree`
 --
 ALTER TABLE `degree`
   ADD CONSTRAINT `FK_degree_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `expcv`
+-- Constraints for table `expcv`
 --
 ALTER TABLE `expcv`
   ADD CONSTRAINT `FK_expCv_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `gallery`
+-- Constraints for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `FK_gallery_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `info`
+-- Constraints for table `info`
 --
 ALTER TABLE `info`
   ADD CONSTRAINT `FK_info_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_info_recr` FOREIGN KEY (`idrec`) REFERENCES `recr` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `recr`
+-- Constraints for table `recr`
 --
 ALTER TABLE `recr`
   ADD CONSTRAINT `FK_rerc_corp` FOREIGN KEY (`idcorp`) REFERENCES `corp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `skillcv`
+-- Constraints for table `skillcv`
 --
 ALTER TABLE `skillcv`
   ADD CONSTRAINT `FK_skillCv_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

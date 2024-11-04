@@ -42,6 +42,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - "./initWebTD.sql:/docker-entrypoint-initdb.d/initWebTD.sql"
+      - "./my_custom.cnf:/etc/mysql/mariadb.conf.d/99-custom.cnf"
     restart: always
 
   phpmyadmin:
