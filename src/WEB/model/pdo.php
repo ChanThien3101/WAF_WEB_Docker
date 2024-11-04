@@ -1,6 +1,6 @@
 <?php
 function pdo_get_connection(){
-    $servername = "mariadb_server";
+    $servername = "db";
     $username = "ankan";
     $password = "310102";
     try {
