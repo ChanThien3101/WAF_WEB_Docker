@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: web_modsecu 
+    image: web_modsecu  
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,10 +9,10 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - db
+      - mariadb_server
     environment:
       TZ: "Asia/Ho_Chi_Minh"
-      DB_SERVER: "db"  
+      DB_SERVER: "mariadb_server"   
       DB_DATABASE: "web_tuyendung"
       DB_USER: "ankan"
       DB_PASSWORD: "310102"
@@ -31,8 +31,13 @@ services:
       - "confModsecurity_data_apache:/etc/apache2/sites-available"
       - "filebeat_data:/etc/filebeat"
 
-  db:
-    image: mariadb:10.5
+    extra_hosts:
+      - "kibana.local:192.168.226.129"
+      - "elasticsearch.local:192.168.226.129"
+      - "logstash.local:192.168.226.129"
+
+  mariadb_server:
+    image: mariadb:latest
     container_name: mariadb_server
     environment:
       MYSQL_ROOT_PASSWORD: "root_password"
@@ -49,12 +54,12 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
     environment:
-      PMA_HOST: db
+      PMA_HOST: mariadb_server
       MYSQL_ROOT_PASSWORD: "root_password"
     ports:
       - "81:80"
     depends_on:
-      - db
+      - mariadb_server
     restart: always
 
 volumes:
